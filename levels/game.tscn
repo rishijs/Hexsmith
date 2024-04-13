@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxwh5063baalu"]
+
+[ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="1_eg84f"]
+[ext_resource type="Texture2D" uid="uid://cbp1ipfa5s581" path="res://art/moltentile.png" id="2_kqwh3"]
+[ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="3_sf020"]
+[ext_resource type="Texture2D" uid="uid://bxdkdhuwahim0" path="res://art/basictile.png" id="4_3po37"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dmue"]
+load_path = "res://.godot/imported/tile.png-73ea3a56b72978ec382fa65704c5659d.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kynl"]
+texture = ExtResource("1_eg84f")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o3vw"]
+texture = ExtResource("2_kqwh3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pnaq2"]
+texture = ExtResource("3_sf020")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0dtp"]
+texture = ExtResource("4_3po37")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hceyf"]
+tile_shape = 3
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_8kynl")
+sources/2 = SubResource("TileSetAtlasSource_7o3vw")
+sources/3 = SubResource("TileSetAtlasSource_pnaq2")
+sources/4 = SubResource("TileSetAtlasSource_x0dtp")
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tile" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("CompressedTexture2D_3dmue")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_hceyf")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -1, 2, 0, -2, 4, 0, -65536, 4, 0, 0, 4, 0, 65535, 4, 0, 1, 2, 0, 65534, 2, 0, -3, 4, 0, 65533, 4, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 2, 4, 0, -65535, 4, 0, -65539, 3, 0, -4, 4, 0, -131070, 4, 0, -65534, 4, 0)
+
+[node name="Interface" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="ColorRect" parent="Interface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00784314, 0.00784314, 0.00784314, 1)
