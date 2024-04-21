@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2xaxkk5uc2l1"]
+[gd_scene load_steps=9 format=3 uid="uid://d2xaxkk5uc2l1"]
 
 [ext_resource type="Script" path="res://levels/interface.gd" id="1_f1v3k"]
 [ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="2_y18bi"]
 [ext_resource type="Texture2D" uid="uid://devs7424rfgh2" path="res://art/pentaframe.png" id="3_k438a"]
 [ext_resource type="Texture2D" uid="uid://b74asa817453l" path="res://art/Restart.png" id="4_lcw7p"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="7_8sg04"]
+[ext_resource type="AudioStream" uid="uid://chmmijasbxhia" path="res://audio/hexagon.ogg" id="7_abk3b"]
+[ext_resource type="AudioStream" uid="uid://du068upl1qsfc" path="res://audio/fire_ambience.ogg" id="8_3p0ap"]
 [ext_resource type="Texture2D" uid="uid://c0nby5p4tojms" path="res://art/QuestionMarkIcon.png" id="8_85tf6"]
 
 [node name="Interface" type="CanvasLayer"]
@@ -205,6 +207,17 @@ RMB / D"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_abk3b")
+volume_db = -5.0
+pitch_scale = 0.6
+autoplay = true
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3p0ap")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://g4oiu4imyvsi"]
+[gd_scene load_steps=5 format=3 uid="uid://g4oiu4imyvsi"]
 
 [ext_resource type="Script" path="res://menus/level_complete.gd" id="1_xcuwh"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="2_uyasb"]
 [ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="2_wdmm1"]
+[ext_resource type="AudioStream" uid="uid://dcbq6di5sggkm" path="res://audio/runes_socketed.wav" id="4_4yj4i"]
 
 [node name="LevelComplete" type="CanvasLayer"]
 script = ExtResource("1_xcuwh")
@@ -88,4 +89,9 @@ theme_override_fonts/font = ExtResource("2_uyasb")
 theme_override_font_sizes/font_size = 50
 text = "NEXT"
 
+[node name="socketed" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_4yj4i")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]

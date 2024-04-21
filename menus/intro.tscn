@@ -36,9 +36,9 @@ offset_right = -0.128052
 offset_bottom = 0.0159607
 theme_override_fonts/font = ExtResource("2_v4g0l")
 theme_override_font_sizes/font_size = 50
-text = "AS A HEXSMITH
-YOU MUST BE A MASTER OF
-THE ART OF HEXAGON
+text = "\"TO BE HEXSMITH
+YOU MUST THINK LIKE
+HEXAGON\"
 
 SMITH PARTS TO FORGE A WEAPON"
 horizontal_alignment = 1

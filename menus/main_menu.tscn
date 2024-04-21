@@ -1,8 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://6hxljbek7awc"]
+[gd_scene load_steps=14 format=3 uid="uid://6hxljbek7awc"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_61apw"]
 [ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="2_ob50k"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_74dfp"]
+[ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="3_1643q"]
+[ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="4_qbioj"]
+[ext_resource type="AudioStream" uid="uid://du068upl1qsfc" path="res://audio/fire_ambience.ogg" id="4_txrcq"]
+[ext_resource type="Texture2D" uid="uid://cbp1ipfa5s581" path="res://art/moltentile.png" id="5_jf6lk"]
+[ext_resource type="Texture2D" uid="uid://bxdkdhuwahim0" path="res://art/basictile.png" id="6_bc3he"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lllka"]
+texture = ExtResource("3_1643q")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qru2f"]
+texture = ExtResource("4_qbioj")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2thee"]
+texture = ExtResource("5_jf6lk")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5b6n1"]
+texture = ExtResource("6_bc3he")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wtmt6"]
+tile_shape = 3
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_lllka")
+sources/1 = SubResource("TileSetAtlasSource_qru2f")
+sources/2 = SubResource("TileSetAtlasSource_2thee")
+sources/3 = SubResource("TileSetAtlasSource_5b6n1")
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_61apw")
@@ -23,6 +56,11 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="hexa" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_wtmt6")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 3, 0, 1, 3, 0, 2, 2, 0, 3, 3, 0, 65539, 3, 0, 4, 2, 0, 65540, 3, 0, 5, 3, 0, 6, 2, 0, 65542, 3, 0, 7, 3, 0, 65543, 3, 0, 8, 3, 0, 65541, 3, 0, 131080, 3, 0, 131079, 3, 0, 65538, 3, 0, 65537, 3, 0, 65536, 3, 0, 196615, 1, 0, 131072, 3, 0, 196608, 1, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0)
 
 [node name="title" type="Label" parent="."]
 offset_left = 176.0
@@ -46,5 +84,10 @@ offset_bottom = -0.104034
 theme_override_fonts/font = ExtResource("3_74dfp")
 theme_override_font_sizes/font_size = 70
 text = "CRAFT"
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_txrcq")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]

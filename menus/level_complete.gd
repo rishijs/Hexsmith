@@ -21,3 +21,8 @@ func _process(_delta):
 func _on_next_pressed():
 	if level_index < 4:
 		get_tree().change_scene_to_file(levels[level_index])
+
+
+func _on_visibility_changed():
+	if self.visible:
+		%socketed.play()

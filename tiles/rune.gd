@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var hexmap:TileMap = get_tree().get_first_node_in_group("Hexmap")
+@onready var game:Node2D = get_tree().get_first_node_in_group("Game")
 
 var loc:Vector2i
 var solidified:bool = false
@@ -30,3 +31,4 @@ func shift_finish():
 	for solid_hex in solid_hexes:
 		if solid_hex.loc == loc:
 			solidified = true
+			game.rune_sfx.play()

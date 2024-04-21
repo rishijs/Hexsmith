@@ -105,6 +105,7 @@ func _on_clicked(shift):
 			set_valid_hexes()
 			set_neighbors()
 			label_neighbors()
+			game.molten_sfx.play()
 			if game.selected_tile == self:
 				active_sprite.show()
 				shift_hexes(shift)

@@ -11,6 +11,10 @@ var hex_textures = {
 
 var selected_tile:Node2D
 
+@export_category("music")
+@export var molten_sfx:AudioStreamPlayer
+@export var rune_sfx:AudioStreamPlayer
+
 func _input(_event):
 	if Input.is_action_just_pressed("shift_left"):
 		shift_left()

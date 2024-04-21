@@ -13,7 +13,7 @@ config_version=5
 config/name="Swordsmith"
 run/main_scene="res://menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://art/moltentile.png"
 
 [autoload]
 
@@ -22,7 +22,7 @@ Globals="*res://autoload/globals.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [input]
 

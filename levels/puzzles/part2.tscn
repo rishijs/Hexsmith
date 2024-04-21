@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlhv6ldud8r3b"]
+[gd_scene load_steps=13 format=3 uid="uid://dlhv6ldud8r3b"]
 
 [ext_resource type="Script" path="res://levels/game.gd" id="1_y4uc6"]
 [ext_resource type="PackedScene" uid="uid://uns8wqqi0a25" path="res://tiles/molten.tscn" id="2_12ofr"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cx7q7eb40c6xx" path="res://tiles/rune.tscn" id="6_7kocd"]
 [ext_resource type="PackedScene" uid="uid://g4oiu4imyvsi" path="res://menus/level_complete.tscn" id="7_bhewf"]
 [ext_resource type="PackedScene" uid="uid://d2xaxkk5uc2l1" path="res://levels/interface.tscn" id="8_y27ed"]
+[ext_resource type="AudioStream" uid="uid://crln7fvknesli" path="res://audio/molten_swing.wav" id="9_3l7vi"]
+[ext_resource type="AudioStream" uid="uid://cp5sdsoxaojem" path="res://audio/rune_socketed.wav" id="10_ucqm2"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwljq"]
 scenes/1/scene = ExtResource("2_12ofr")
@@ -21,8 +23,10 @@ tile_shape = 3
 tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetScenesCollectionSource_fwljq")
 
-[node name="Part2" type="Node2D" groups=["Game"]]
+[node name="Part2" type="Node2D" node_paths=PackedStringArray("molten_sfx", "rune_sfx") groups=["Game"]]
 script = ExtResource("1_y4uc6")
+molten_sfx = NodePath("molten")
+rune_sfx = NodePath("rune")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.7, 0.7)
@@ -43,3 +47,10 @@ level_index = 2
 flavor_text = "\"AH THE BEAUTY  OF SIMPLICITY\" - LAST WORDS"
 
 [node name="Interface" parent="." instance=ExtResource("8_y27ed")]
+
+[node name="molten" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3l7vi")
+volume_db = -15.0
+
+[node name="rune" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ucqm2")

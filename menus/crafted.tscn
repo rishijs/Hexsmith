@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drfc8lja04myd"]
+[gd_scene load_steps=5 format=3 uid="uid://drfc8lja04myd"]
 
 [ext_resource type="Script" path="res://menus/crafted.gd" id="1_t6bsh"]
 [ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="2_6wf3b"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_iqrdc"]
+[ext_resource type="AudioStream" uid="uid://dcbq6di5sggkm" path="res://audio/runes_socketed.wav" id="4_1afkj"]
 
 [node name="Crafted" type="CanvasLayer"]
 script = ExtResource("1_t6bsh")
@@ -102,5 +103,10 @@ theme_override_font_sizes/font_size = 30
 text = "IDEAL TIME : 5 MINS"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="socketed" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_1afkj")
+autoplay = true
 
 [connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
