@@ -43,9 +43,6 @@ func set_neighbors():
 		for valid_hex in valid_hexes:
 			if neighbor_loc == valid_hex.loc:
 				neighbors.append(valid_hex)
-	
-	if hex_type == hex_types.BASIC or hex_type == hex_types.MOLTEN:		
-		active_sprite.show()
 
 func label_neighbors():
 	for curr_hex in valid_hexes:
@@ -53,7 +50,8 @@ func label_neighbors():
 	for i in range(len(neighbors)):
 		neighbors[i].index_text.text = str(i)
 		#neighbors[i].index_text.show()
-		neighbors[i].active_sprite.show()
+		if neighbors[i].hex_type == hex_types.BASIC:
+			neighbors[i].active_sprite.show()
 		
 
 func set_loc():
@@ -64,8 +62,8 @@ func set_valid_hexes():
 	var all_tiles = get_tree().get_nodes_in_group("Hex")
 	for tile in all_tiles:
 		valid_hexes.append(tile)
-	for hex in valid_hexes:
-		hex.active_sprite.hide()
+	for valid_hex in valid_hexes:
+		valid_hex.active_sprite.hide()
 
 func check_runes():
 	var runes = get_tree().get_nodes_in_group("Rune")
@@ -106,5 +104,10 @@ func _on_clicked(shift):
 		hex_types.MOLTEN:
 			set_valid_hexes()
 			set_neighbors()
-			shift_hexes(shift)
 			label_neighbors()
+			if game.selected_tile == self:
+				active_sprite.show()
+				shift_hexes(shift)
+			else:
+				active_sprite.show()
+				game.selected_tile = self

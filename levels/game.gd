@@ -9,15 +9,13 @@ var hex_textures = {
 	"solid" = preload("res://art/hex.png"),
 }
 
+var selected_tile:Node2D
+
 func _input(_event):
 	if Input.is_action_just_pressed("shift_left"):
-		var selected = get_selected_tile()
-		if selected!=null:
-			selected.clicked.emit("left")
+		shift_left()
 	if Input.is_action_just_pressed("shift_right"):
-		var selected = get_selected_tile()
-		if selected!=null:
-			selected.clicked.emit("right")
+		shift_right()
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 	
@@ -27,6 +25,16 @@ func _ready():
 
 func _process(_delta):
 	check_win_state()
+
+func shift_left():
+	var selected = get_selected_tile()
+	if selected!=null:
+		selected.clicked.emit("left")
+
+func shift_right():
+	var selected = get_selected_tile()
+	if selected!=null:
+		selected.clicked.emit("right")
 
 func get_selected_tile():
 	var mouse_map_pos = hexmap.local_to_map(get_global_mouse_position())

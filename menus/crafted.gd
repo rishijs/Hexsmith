@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 func _ready():
-	pass
+	%Time.text = "COMPLETED IN : "+Globals.time_string
 
 
 func _process(_delta):
