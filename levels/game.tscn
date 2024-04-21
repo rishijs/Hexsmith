@@ -1,56 +1,36 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxwh5063baalu"]
+[gd_scene load_steps=9 format=3 uid="uid://bxwh5063baalu"]
 
-[ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="1_eg84f"]
-[ext_resource type="Texture2D" uid="uid://cbp1ipfa5s581" path="res://art/moltentile.png" id="2_kqwh3"]
-[ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="3_sf020"]
-[ext_resource type="Texture2D" uid="uid://bxdkdhuwahim0" path="res://art/basictile.png" id="4_3po37"]
+[ext_resource type="Script" path="res://levels/game.gd" id="1_06lvm"]
+[ext_resource type="PackedScene" uid="uid://uns8wqqi0a25" path="res://tiles/molten.tscn" id="1_8n6oe"]
+[ext_resource type="PackedScene" uid="uid://35jv1cq08cj3" path="res://tiles/normal.tscn" id="2_tr7ml"]
+[ext_resource type="PackedScene" uid="uid://fbkv1cycyy0j" path="res://tiles/volcanic.tscn" id="3_6oytj"]
+[ext_resource type="PackedScene" uid="uid://bwktuir1uwrbu" path="res://tiles/solid.tscn" id="4_l1knc"]
+[ext_resource type="Script" path="res://levels/interface.gd" id="5_r8mk7"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dmue"]
-load_path = "res://.godot/imported/tile.png-73ea3a56b72978ec382fa65704c5659d.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kynl"]
-texture = ExtResource("1_eg84f")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o3vw"]
-texture = ExtResource("2_kqwh3")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pnaq2"]
-texture = ExtResource("3_sf020")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0dtp"]
-texture = ExtResource("4_3po37")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwljq"]
+scenes/1/scene = ExtResource("1_8n6oe")
+scenes/2/scene = ExtResource("2_tr7ml")
+scenes/3/scene = ExtResource("3_6oytj")
+scenes/4/scene = ExtResource("4_l1knc")
 
 [sub_resource type="TileSet" id="TileSet_hceyf"]
 tile_shape = 3
 tile_size = Vector2i(128, 128)
-sources/0 = SubResource("TileSetAtlasSource_8kynl")
-sources/2 = SubResource("TileSetAtlasSource_7o3vw")
-sources/3 = SubResource("TileSetAtlasSource_pnaq2")
-sources/4 = SubResource("TileSetAtlasSource_x0dtp")
+sources/1 = SubResource("TileSetScenesCollectionSource_fwljq")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_06lvm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Tile" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = SubResource("CompressedTexture2D_3dmue")
-
-[node name="TileMap" type="TileMap" parent="."]
+[node name="hexmap" type="TileMap" parent="." groups=["Hexmap"]]
 tile_set = SubResource("TileSet_hceyf")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -1, 2, 0, -2, 4, 0, -65536, 4, 0, 0, 4, 0, 65535, 4, 0, 1, 2, 0, 65534, 2, 0, -3, 4, 0, 65533, 4, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 2, 4, 0, -65535, 4, 0, -65539, 3, 0, -4, 4, 0, -131070, 4, 0, -65534, 4, 0)
+layer_0/tile_data = PackedInt32Array(-65538, 1, 262144, -65537, 1, 131072, -131072, 1, 131072, -131071, 1, 262144, -1, 1, 262144, -2, 1, 131072, -65536, 1, 196608, 0, 1, 65536, 65535, 1, 196608, 1, 1, 131072, 65534, 1, 131072, -3, 1, 65536, 65533, 1, 131072, 131069, 1, 131072, 131070, 1, 131072, 131071, 1, 131072, 65536, 1, 131072, 65537, 1, 131072, 2, 1, 131072, -65535, 1, 65536, -65539, 1, 196608, -4, 1, 131072, -131070, 1, 131072, -65534, 1, 131072)
 
 [node name="Interface" type="CanvasLayer" parent="."]
-visible = false
+layer = -1
+script = ExtResource("5_r8mk7")
 
 [node name="Background" type="ColorRect" parent="Interface"]
 anchors_preset = 15

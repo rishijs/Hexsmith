@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://uns8wqqi0a25"]
+
+[ext_resource type="Script" path="res://tiles/hex.gd" id="1_mgwg4"]
+[ext_resource type="Texture2D" uid="uid://cbp1ipfa5s581" path="res://art/moltentile.png" id="1_x3y13"]
+
+[node name="Molten" type="Node2D" groups=["Hex"]]
+script = ExtResource("1_mgwg4")
+hex_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x3y13")

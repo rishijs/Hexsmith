@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://fbkv1cycyy0j"]
+
+[ext_resource type="Script" path="res://tiles/hex.gd" id="1_tnjaf"]
+[ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="2_rb4hy"]
+
+[node name="volcanic" type="Node2D" groups=["Hex"]]
+script = ExtResource("1_tnjaf")
+hex_type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rb4hy")

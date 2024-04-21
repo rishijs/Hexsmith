@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwktuir1uwrbu"]
+
+[ext_resource type="Script" path="res://tiles/hex.gd" id="1_yt0hv"]
+[ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="2_60kep"]
+
+[node name="solid" type="Node2D" groups=["Hex"]]
+script = ExtResource("1_yt0hv")
+hex_type = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_60kep")
