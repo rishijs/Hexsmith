@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djdg3c2jyyymd"]
+[gd_scene load_steps=11 format=3 uid="uid://bwq466h3c84qt"]
 
 [ext_resource type="Script" path="res://levels/game.gd" id="1_cb1ic"]
 [ext_resource type="PackedScene" uid="uid://uns8wqqi0a25" path="res://tiles/molten.tscn" id="2_cxpmc"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwktuir1uwrbu" path="res://tiles/solid.tscn" id="5_kvnww"]
 [ext_resource type="PackedScene" uid="uid://cx7q7eb40c6xx" path="res://tiles/rune.tscn" id="6_t7xm5"]
 [ext_resource type="PackedScene" uid="uid://g4oiu4imyvsi" path="res://menus/level_complete.tscn" id="7_c8npa"]
-[ext_resource type="Script" path="res://levels/interface.gd" id="8_fl8dy"]
-[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="9_l3hcp"]
+[ext_resource type="PackedScene" uid="uid://d2xaxkk5uc2l1" path="res://levels/interface.tscn" id="8_l5jau"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwljq"]
 scenes/1/scene = ExtResource("2_cxpmc")
@@ -26,59 +25,21 @@ sources/1 = SubResource("TileSetScenesCollectionSource_fwljq")
 script = ExtResource("1_cb1ic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -72)
+zoom = Vector2(0.5, 0.5)
 
 [node name="hexmap" type="TileMap" parent="." groups=["Hexmap"]]
 tile_set = SubResource("TileSet_hceyf")
 format = 2
 layer_0/name = "hex"
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-65538, 1, 262144, -65537, 1, 131072, -131072, 1, 131072, -131071, 1, 262144, -1, 1, 262144, -2, 1, 131072, -65536, 1, 131072, 0, 1, 65536, 65535, 1, 131072, 1, 1, 131072, 65534, 1, 131072, -3, 1, 65536, 65533, 1, 131072, 131069, 1, 131072, 131070, 1, 131072, 131071, 1, 131072, 65536, 1, 131072, 65537, 1, 131072, 2, 1, 131072, -65535, 1, 65536, -65539, 1, 131072, -4, 1, 131072, -131070, 1, 131072, -65534, 1, 131072)
+layer_0/tile_data = PackedInt32Array(-65538, 1, 262144, -65537, 1, 65536, -131072, 1, 131072, -131071, 1, 65536, -1, 1, 65536, -2, 1, 131072, -65536, 1, 131072, 0, 1, 65536, 65535, 1, 262144, 1, 1, 131072, 65534, 1, 65536, -3, 1, 131072, 65533, 1, 262144, 131069, 1, 131072, 131070, 1, 131072, 131071, 1, 131072, 65536, 1, 65536, 65537, 1, 131072, 2, 1, 65536, -65535, 1, 65536, -65539, 1, 65536, -4, 1, 131072, -131070, 1, 131072, -65534, 1, 131072, 131068, 1, 131072, 196605, 1, 65536, 262141, 1, 131072, 196606, 1, 262144, 262142, 1, 131072, 196607, 1, 65536, 262143, 1, 131072, 131072, 1, 262144, 196608, 1, 131072, 131073, 1, 65536, -5, 1, 131072, -65540, 1, 262144, -65541, 1, 65536, -131069, 1, 65536, -131077, 1, 131072, -131076, 1, 131072, -131075, 1, 131072, -131074, 1, 65536, -131073, 1, 131072, -196608, 1, 65536, -196606, 1, 65536, -196612, 1, 65536, -196611, 1, 262144, -196610, 1, 131072, -196609, 1, 131072, -262144, 1, 65536, -262143, 1, 131072, -262142, 1, 65536, 196609, 1, 131072, 131074, 1, 131072, 65538, 1, 131072, 3, 1, 131072, -65533, 1, 65536, -131068, 1, 131072, -196605, 1, 131072, -262141, 1, 131072, -327678, 1, 131072, -327679, 1, 65536, -393214, 1, 131072, -393215, 1, 65536, -393216, 1, 131072, -262145, 1, 65536, -327680, 1, 131072, -262146, 1, 262144, -262147, 1, 65536, -262148, 1, 131072, -327683, 1, 131072, -327682, 1, 131072, -327681, 1, 131072, 65532, 1, 65536, -196607, 1, 131072)
 layer_1/name = "rune"
 layer_1/z_index = 2
-layer_1/tile_data = PackedInt32Array(65535, 1, 327680, -65536, 1, 327680, -65539, 1, 327680)
+layer_1/tile_data = PackedInt32Array(-327678, 1, 327680, -262141, 1, 327680, -196605, 1, 327680, -131070, 1, 327680, -262143, 1, 327680, -196607, 1, 327680, -327680, 1, 327680, -65534, 1, 327680)
 
 [node name="LevelComplete" parent="." groups=["LevelComplete"] instance=ExtResource("7_c8npa")]
 visible = false
 level_index = 4
 
-[node name="Interface" type="CanvasLayer" parent="."]
-layer = -1
-script = ExtResource("8_fl8dy")
-
-[node name="Background" type="ColorRect" parent="Interface"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.152941, 0.00784314, 0.00784314, 1)
-
-[node name="noise" parent="Interface" instance=ExtResource("9_l3hcp")]
-
-[connection signal="clicked" from="hexmap/solid" to="hexmap/solid" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/Normal" to="hexmap/Normal" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404147" to="hexmap/@Node2D@404147" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404148" to="hexmap/@Node2D@404148" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404149" to="hexmap/@Node2D@404149" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404150" to="hexmap/@Node2D@404150" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404151" to="hexmap/@Node2D@404151" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/Molten" to="hexmap/Molten" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404152" to="hexmap/@Node2D@404152" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404153" to="hexmap/@Node2D@404153" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404154" to="hexmap/@Node2D@404154" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404155" to="hexmap/@Node2D@404155" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404156" to="hexmap/@Node2D@404156" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404157" to="hexmap/@Node2D@404157" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404158" to="hexmap/@Node2D@404158" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404159" to="hexmap/@Node2D@404159" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404160" to="hexmap/@Node2D@404160" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404161" to="hexmap/@Node2D@404161" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404162" to="hexmap/@Node2D@404162" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404163" to="hexmap/@Node2D@404163" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404164" to="hexmap/@Node2D@404164" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404165" to="hexmap/@Node2D@404165" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404166" to="hexmap/@Node2D@404166" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@404167" to="hexmap/@Node2D@404167" method="_on_clicked"]
-[connection signal="shift" from="hexmap/Rune" to="hexmap/Rune" method="_on_shift"]
-[connection signal="shift" from="hexmap/@Node2D@404168" to="hexmap/@Node2D@404168" method="_on_shift"]
-[connection signal="shift" from="hexmap/@Node2D@404169" to="hexmap/@Node2D@404169" method="_on_shift"]
+[node name="Interface" parent="." instance=ExtResource("8_l5jau")]

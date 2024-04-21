@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlhv6ldud8r3b"]
+[gd_scene load_steps=11 format=3 uid="uid://dlhv6ldud8r3b"]
 
 [ext_resource type="Script" path="res://levels/game.gd" id="1_y4uc6"]
 [ext_resource type="PackedScene" uid="uid://uns8wqqi0a25" path="res://tiles/molten.tscn" id="2_12ofr"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwktuir1uwrbu" path="res://tiles/solid.tscn" id="5_hlnxv"]
 [ext_resource type="PackedScene" uid="uid://cx7q7eb40c6xx" path="res://tiles/rune.tscn" id="6_7kocd"]
 [ext_resource type="PackedScene" uid="uid://g4oiu4imyvsi" path="res://menus/level_complete.tscn" id="7_bhewf"]
-[ext_resource type="Script" path="res://levels/interface.gd" id="8_dfuja"]
-[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="9_y4npl"]
+[ext_resource type="PackedScene" uid="uid://d2xaxkk5uc2l1" path="res://levels/interface.tscn" id="8_y27ed"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwljq"]
 scenes/1/scene = ExtResource("2_12ofr")
@@ -26,31 +25,21 @@ sources/1 = SubResource("TileSetScenesCollectionSource_fwljq")
 script = ExtResource("1_y4uc6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
 
 [node name="hexmap" type="TileMap" parent="." groups=["Hexmap"]]
 tile_set = SubResource("TileSet_hceyf")
 format = 2
 layer_0/name = "hex"
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-65538, 1, 262144, -65537, 1, 131072, -131072, 1, 131072, -131071, 1, 262144, -1, 1, 262144, -2, 1, 131072, -65536, 1, 131072, 0, 1, 65536, 65535, 1, 131072, 1, 1, 131072, 65534, 1, 131072, -3, 1, 65536, 65533, 1, 131072, 131069, 1, 131072, 131070, 1, 131072, 131071, 1, 131072, 65536, 1, 131072, 65537, 1, 131072, 2, 1, 131072, -65535, 1, 65536, -65539, 1, 131072, -4, 1, 131072, -131070, 1, 131072, -65534, 1, 131072)
+layer_0/tile_data = PackedInt32Array(-131072, 1, 131072, 65533, 1, 131072, 131070, 1, 131072, 131071, 1, 131072, 65536, 1, 131072, 131073, 1, 131072, 131074, 1, 131072, 65538, 1, 131072, 2, 1, 131072, -65535, 1, 131072, -65536, 1, 131072, -65534, 1, 131072, -1, 1, 131072, 65535, 1, 131072, -2, 1, 131072, -3, 1, 131072, -4, 1, 131072, -65540, 1, 131072, -131076, 1, 131072, -131075, 1, 131072, -131074, 1, 131072, -131073, 1, 131072, -131069, 1, 131072, -196606, 1, 131072, -196607, 1, 131072, -131070, 1, 65536, 65537, 1, 65536, 0, 1, 65536, 131069, 1, 262144, -65539, 1, 65536, -65537, 1, 65536, 1, 1, 262144, -131071, 1, 262144, -65538, 1, 262144, 65534, 1, 65536)
 layer_1/name = "rune"
 layer_1/z_index = 2
-layer_1/tile_data = PackedInt32Array(65535, 1, 327680, -65536, 1, 327680, -65539, 1, 327680)
+layer_1/tile_data = PackedInt32Array(65535, 1, 327680, -65540, 1, 327680, -131072, 1, 327680, -131069, 1, 327680)
 
 [node name="LevelComplete" parent="." groups=["LevelComplete"] instance=ExtResource("7_bhewf")]
 visible = false
 level_index = 2
+flavor_text = "\"AH THE BEAUTY  OF SIMPLICITY\" - LAST WORDS"
 
-[node name="Interface" type="CanvasLayer" parent="."]
-layer = -1
-script = ExtResource("8_dfuja")
-
-[node name="Background" type="ColorRect" parent="Interface"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.152941, 0.00784314, 0.00784314, 1)
-
-[node name="noise" parent="Interface" instance=ExtResource("9_y4npl")]
+[node name="Interface" parent="." instance=ExtResource("8_y27ed")]

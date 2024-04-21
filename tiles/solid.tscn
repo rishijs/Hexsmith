@@ -1,17 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwktuir1uwrbu"]
+[gd_scene load_steps=9 format=3 uid="uid://bwktuir1uwrbu"]
 
 [ext_resource type="Script" path="res://tiles/hex.gd" id="1_yt0hv"]
-[ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="2_60kep"]
+[ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="2_mlwa7"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_ll6f8"]
+[ext_resource type="Shader" path="res://art/noise.gdshader" id="4_8d1ln"]
 
-[node name="solid" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex", "Solid"]]
+[sub_resource type="Gradient" id="Gradient_v1vca"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tksur"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qj1ft"]
+seamless = true
+seamless_blend_skirt = 0.359
+color_ramp = SubResource("Gradient_v1vca")
+noise = SubResource("FastNoiseLite_tksur")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r4qoj"]
+shader = ExtResource("4_8d1ln")
+shader_parameter/speed = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_qj1ft")
+
+[node name="solid" type="Node2D" node_paths=PackedStringArray("hex", "index_text", "active_sprite") groups=["Hex", "Solid"]]
 script = ExtResource("1_yt0hv")
 hex_type = 3
 hex = NodePath("Sprite2D")
 index_text = NodePath("index")
+active_sprite = NodePath("active")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_60kep")
+texture = ExtResource("2_mlwa7")
 
 [node name="index" type="Label" parent="."]
 visible = false
@@ -23,5 +41,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ll6f8")
 theme_override_font_sizes/font_size = 50
 text = "X"
+
+[node name="active" type="Sprite2D" parent="."]
+modulate = Color(1, 0.188235, 0.0588235, 0.968627)
+material = SubResource("ShaderMaterial_r4qoj")
+position = Vector2(-1.43051e-06, -2.38419e-07)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]

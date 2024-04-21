@@ -57,6 +57,23 @@ text = "X PARTS LEFT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="flavor" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.407
+anchor_right = 0.833
+anchor_bottom = 0.531
+offset_left = -0.384018
+offset_top = 0.264008
+offset_right = 0.383911
+offset_bottom = -0.0880127
+theme_override_fonts/font = ExtResource("2_uyasb")
+theme_override_font_sizes/font_size = 25
+text = "\"THIS IS SOME FLAVOR TEXT\" - HI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="next" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.417

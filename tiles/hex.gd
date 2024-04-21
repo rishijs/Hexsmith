@@ -17,12 +17,14 @@ signal clicked(shift)
 @export_category("refs")
 @export var hex:Sprite2D
 @export var index_text:Label
+@export var active_sprite:Sprite2D
 
 func _ready():
 	set_loc()
 	
-func _process(_delta):
-	pass
+func _process(delta):
+	if hex_type == hex_types.BASIC and active_sprite.visible:
+		active_sprite.rotation -= delta/10
 
 func set_neighbors():
 	neighbors.clear()
@@ -41,13 +43,18 @@ func set_neighbors():
 		for valid_hex in valid_hexes:
 			if neighbor_loc == valid_hex.loc:
 				neighbors.append(valid_hex)
+	
+	if hex_type == hex_types.BASIC or hex_type == hex_types.MOLTEN:		
+		active_sprite.show()
 
 func label_neighbors():
 	for curr_hex in valid_hexes:
 		curr_hex.index_text.hide()
 	for i in range(len(neighbors)):
 		neighbors[i].index_text.text = str(i)
-		neighbors[i].index_text.show()
+		#neighbors[i].index_text.show()
+		neighbors[i].active_sprite.show()
+		
 
 func set_loc():
 	loc = hexmap.local_to_map(transform.get_origin())
@@ -57,6 +64,8 @@ func set_valid_hexes():
 	var all_tiles = get_tree().get_nodes_in_group("Hex")
 	for tile in all_tiles:
 		valid_hexes.append(tile)
+	for hex in valid_hexes:
+		hex.active_sprite.hide()
 
 func check_runes():
 	var runes = get_tree().get_nodes_in_group("Rune")
@@ -98,4 +107,4 @@ func _on_clicked(shift):
 			set_valid_hexes()
 			set_neighbors()
 			shift_hexes(shift)
-			#label_neighbors()
+			label_neighbors()

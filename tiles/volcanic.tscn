@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="2_rb4hy"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_fqbb7"]
 
-[node name="volcanic" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex"]]
+[node name="volcanic" type="Node2D" node_paths=PackedStringArray("hex", "index_text", "active_sprite") groups=["Hex"]]
 script = ExtResource("1_tnjaf")
 hex_type = 2
 hex = NodePath("Sprite2D")
 index_text = NodePath("index")
+active_sprite = NodePath("active")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_rb4hy")
@@ -22,5 +23,9 @@ offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_fqbb7")
 theme_override_font_sizes/font_size = 50
 text = "X"
+
+[node name="active" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.682353, 0.223529, 0.12549, 1)
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]

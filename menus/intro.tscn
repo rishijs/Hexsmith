@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://c03qwosl7s8mq"]
+
+[ext_resource type="Script" path="res://menus/intro.gd" id="1_0a4c2"]
+[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="1_btgqv"]
+[ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="2_v4g0l"]
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_0a4c2")
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.454902, 0.152941, 0.101961, 1)
+
+[node name="noise" parent="." instance=ExtResource("1_btgqv")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.099
+anchor_right = 0.889
+anchor_bottom = 0.733
+offset_left = 0.127991
+offset_top = -0.152008
+offset_right = -0.128052
+offset_bottom = 0.0159607
+theme_override_fonts/font = ExtResource("2_v4g0l")
+theme_override_font_sizes/font_size = 50
+text = "AS A HEXSMITH
+YOU MUST BE A MASTER OF
+THE ART OF HEXAGON
+
+SMITH PARTS TO FORGE A WEAPON"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="continue" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.765
+anchor_right = 0.59
+anchor_bottom = 0.877
+offset_left = -0.320038
+offset_top = 0.279968
+offset_right = 0.319946
+offset_bottom = -0.296021
+theme_override_fonts/font = ExtResource("2_v4g0l")
+theme_override_font_sizes/font_size = 30
+text = "CONTINUE"
+
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

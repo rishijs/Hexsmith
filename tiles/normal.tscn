@@ -1,13 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://35jv1cq08cj3"]
+[gd_scene load_steps=10 format=3 uid="uid://35jv1cq08cj3"]
 
 [ext_resource type="Texture2D" uid="uid://bxdkdhuwahim0" path="res://art/basictile.png" id="1_4l538"]
 [ext_resource type="Script" path="res://tiles/hex.gd" id="1_5d1kb"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_wuw4f"]
+[ext_resource type="Texture2D" uid="uid://owvsh7jwp0p4" path="res://art/vertical_hexa.png" id="4_82t14"]
+[ext_resource type="Shader" path="res://art/noise.gdshader" id="4_u23m6"]
 
-[node name="Normal" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex"]]
+[sub_resource type="Gradient" id="Gradient_rmqdt"]
+colors = PackedColorArray(1, 0, 0, 1, 0.823529, 0.537255, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_psjt1"]
+noise_type = 3
+frequency = 0.0036
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ai0j"]
+seamless = true
+seamless_blend_skirt = 0.359
+color_ramp = SubResource("Gradient_rmqdt")
+noise = SubResource("FastNoiseLite_psjt1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43og4"]
+shader = ExtResource("4_u23m6")
+shader_parameter/speed = 0.05
+shader_parameter/noise = SubResource("NoiseTexture2D_3ai0j")
+
+[node name="Normal" type="Node2D" node_paths=PackedStringArray("hex", "index_text", "active_sprite") groups=["Hex"]]
 script = ExtResource("1_5d1kb")
 hex = NodePath("hex")
 index_text = NodePath("index")
+active_sprite = NodePath("active")
 
 [node name="hex" type="Sprite2D" parent="."]
 texture = ExtResource("1_4l538")
@@ -21,5 +42,13 @@ offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_wuw4f")
 theme_override_font_sizes/font_size = 50
 text = "X"
+
+[node name="active" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.188235, 0.0588235, 0.462745)
+material = SubResource("ShaderMaterial_43og4")
+position = Vector2(-1.43051e-06, -2.38419e-07)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_82t14")
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]
