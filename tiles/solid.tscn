@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="2_60kep"]
 [ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_ll6f8"]
 
-[node name="solid" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex"]]
+[node name="solid" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex", "Solid"]]
 script = ExtResource("1_yt0hv")
 hex_type = 3
 hex = NodePath("Sprite2D")

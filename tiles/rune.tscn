@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7q7eb40c6xx"]
+
+[ext_resource type="Texture2D" uid="uid://bnu6ikvap3tp4" path="res://art/volatile.png" id="1_ebyc6"]
+[ext_resource type="Script" path="res://tiles/rune.gd" id="1_syiuo"]
+
+[node name="Rune" type="Node2D" groups=["Rune"]]
+script = ExtResource("1_syiuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_ebyc6")
+
+[connection signal="shift" from="." to="." method="_on_shift"]

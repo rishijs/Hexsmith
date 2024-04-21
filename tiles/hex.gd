@@ -3,13 +3,14 @@ extends Node2D
 @onready var hexmap:TileMap = get_tree().get_first_node_in_group("Hexmap")
 @onready var game:Node2D = get_tree().get_first_node_in_group("Game")
 
-enum hex_types{BASIC,MOLTEN,VOLCANIC,SOLID}
+enum hex_types{BASIC,MOLTEN,SOLID}
 
 @export var hex_type:hex_types
-var original_hex_type = hex_type
 var loc:Vector2i
 var neighbors:Array[Node2D]
 var valid_hexes:Array[Node2D]
+var has_rune:bool
+var rune_ref:Node2D
 
 signal clicked(shift)
 
@@ -42,8 +43,8 @@ func set_neighbors():
 				neighbors.append(valid_hex)
 
 func label_neighbors():
-	for hex in valid_hexes:
-		hex.index_text.hide()
+	for curr_hex in valid_hexes:
+		curr_hex.index_text.hide()
 	for i in range(len(neighbors)):
 		neighbors[i].index_text.text = str(i)
 		neighbors[i].index_text.show()
@@ -57,37 +58,35 @@ func set_valid_hexes():
 	for tile in all_tiles:
 		valid_hexes.append(tile)
 
+func check_runes():
+	var runes = get_tree().get_nodes_in_group("Rune")
+	for rune in runes:
+		if rune.loc == loc:
+			has_rune = true
+			rune_ref = rune
+			
+
 func shift_hexes(dir):
-	if dir == "left":
-		for i in range(len(neighbors)):
-			if neighbors[i].hex_type == hex_types.VOLCANIC:
-				if i == len(neighbors) - 1:
-					neighbors[i].change_type(neighbors[i].original_hex_type)
-					neighbors[0].change_type(hex_types.VOLCANIC)
-					var temp = neighbors[i]
-					neighbors[i] = neighbors[0]
-					neighbors[0] = temp
-				else:
-					neighbors[i].change_type(neighbors[i].original_hex_type)
-					neighbors[i+1].change_type(hex_types.VOLCANIC)
-					var temp = neighbors[i]
-					neighbors[i] = neighbors[i+1]
-					neighbors[i+1] = temp
-	elif dir == "right":
-		for i in range(len(neighbors)):
-			if neighbors[i].hex_type == hex_types.VOLCANIC:
-				if i == 0:
-					neighbors[0].change_type(neighbors[i].original_hex_type)
-					neighbors[len(neighbors)-1].change_type(hex_types.VOLCANIC)
-					var temp = neighbors[0]
-					neighbors[0] = neighbors[len(neighbors)-1]
-					neighbors[len(neighbors)-1] = temp
-				else:
-					neighbors[i].change_type(neighbors[i].original_hex_type)
-					neighbors[i-1].change_type(hex_types.VOLCANIC)
-					var temp = neighbors[i]
-					neighbors[i] = neighbors[i-1]
-					neighbors[i-1] = temp
+	for i in range(len(neighbors)):
+		neighbors[i].check_runes()
+		if neighbors[i].has_rune:
+			if neighbors[i].rune_ref.shifted == false:
+				if dir == "left":
+					if i == 0:
+						neighbors[i].rune_ref.shift.emit(neighbors[len(neighbors)-1].loc)
+					else:
+						neighbors[i].rune_ref.shift.emit(neighbors[i-1].loc)
+				elif dir == "right":
+					if i == len(neighbors)-1:
+						neighbors[i].rune_ref.shift.emit(neighbors[0].loc)
+					else:
+						neighbors[i].rune_ref.shift.emit(neighbors[i+1].loc)		
+		neighbors[i].rune_ref = null
+		neighbors[i].has_rune = false
+	
+	var runes = get_tree().get_nodes_in_group("Rune")
+	for rune in runes:
+		rune.shifted = false
 
 func change_type(new_type:hex_types):
 	hex_type = new_type

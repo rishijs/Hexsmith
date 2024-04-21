@@ -18,13 +18,15 @@ func _input(_event):
 		var selected = get_selected_tile()
 		if selected!=null:
 			selected.clicked.emit("right")
-		
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+	
 func _ready():
 	pass
 
 
 func _process(_delta):
-	pass
+	check_win_state()
 
 func get_selected_tile():
 	var mouse_map_pos = hexmap.local_to_map(get_global_mouse_position())
@@ -33,4 +35,13 @@ func get_selected_tile():
 		if tile.loc == mouse_map_pos:
 			return tile
 	return null
+
+func check_win_state():
+	var runes = get_tree().get_nodes_in_group("Rune")
+	var win = true
+	for rune in runes:
+		if rune.solidified == false:
+			win = false
+	if win == true and runes.size() > 0:
+		print("win")
 
