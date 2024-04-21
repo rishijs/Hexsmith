@@ -1,3 +1,70 @@
-[gd_scene format=3 uid="uid://drfc8lja04myd"]
+[gd_scene load_steps=4 format=3 uid="uid://drfc8lja04myd"]
+
+[ext_resource type="Script" path="res://menus/crafted.gd" id="1_t6bsh"]
+[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="2_6wf3b"]
+[ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_iqrdc"]
 
 [node name="Crafted" type="CanvasLayer"]
+script = ExtResource("1_t6bsh")
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.454902, 0.0313726, 0.0352941, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="noise" parent="." instance=ExtResource("2_6wf3b")]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.099
+anchor_right = 0.917
+anchor_bottom = 0.296
+offset_left = 0.319992
+offset_top = -0.152008
+offset_right = -0.384033
+offset_bottom = 3.192
+theme_override_fonts/font = ExtResource("3_iqrdc")
+theme_override_font_sizes/font_size = 100
+text = "FORGE SUCCESS"
+horizontal_alignment = 1
+
+[node name="menu" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.361
+anchor_top = 0.457
+anchor_right = 0.639
+anchor_bottom = 0.571
+offset_left = 0.12796
+offset_top = 175.864
+offset_right = -0.128052
+offset_bottom = 175.992
+theme_override_fonts/font = ExtResource("3_iqrdc")
+theme_override_font_sizes/font_size = 50
+text = "MAIN MENU"
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.284
+anchor_right = 0.833
+anchor_bottom = 0.407
+offset_left = -8.38402
+offset_top = -0.0320129
+offset_right = 8.38391
+offset_bottom = 8.26401
+theme_override_colors/font_color = Color(1, 0.686275, 0, 1)
+theme_override_fonts/font = ExtResource("3_iqrdc")
+theme_override_font_sizes/font_size = 20
+text = "THANKS FOR PLAYING! CHECK LINKS IN DESCRIPTION FOR MORE STUFF BY ME
+
+MADE IN 12 HOURS FOR THE GWJ"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]

@@ -98,4 +98,4 @@ func _on_clicked(shift):
 			set_valid_hexes()
 			set_neighbors()
 			shift_hexes(shift)
-			label_neighbors()
+			#label_neighbors()

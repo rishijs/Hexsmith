@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxwh5063baalu"]
+[gd_scene load_steps=12 format=3 uid="uid://bxwh5063baalu"]
 
 [ext_resource type="Script" path="res://levels/game.gd" id="1_06lvm"]
 [ext_resource type="PackedScene" uid="uid://uns8wqqi0a25" path="res://tiles/molten.tscn" id="1_8n6oe"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bwktuir1uwrbu" path="res://tiles/solid.tscn" id="4_l1knc"]
 [ext_resource type="Script" path="res://levels/interface.gd" id="5_r8mk7"]
 [ext_resource type="PackedScene" uid="uid://cx7q7eb40c6xx" path="res://tiles/rune.tscn" id="6_c73lh"]
+[ext_resource type="PackedScene" uid="uid://g4oiu4imyvsi" path="res://menus/level_complete.tscn" id="7_20stq"]
+[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="7_xm5qa"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwljq"]
 scenes/1/scene = ExtResource("1_8n6oe")
@@ -35,6 +37,9 @@ layer_1/name = "rune"
 layer_1/z_index = 2
 layer_1/tile_data = PackedInt32Array(65535, 1, 327680, -65536, 1, 327680, -65539, 1, 327680)
 
+[node name="LevelComplete" parent="." groups=["LevelComplete"] instance=ExtResource("7_20stq")]
+visible = false
+
 [node name="Interface" type="CanvasLayer" parent="."]
 layer = -1
 script = ExtResource("5_r8mk7")
@@ -45,32 +50,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+color = Color(0.152941, 0.00784314, 0.00784314, 1)
 
-[connection signal="clicked" from="hexmap/solid" to="hexmap/solid" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/Normal" to="hexmap/Normal" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234318" to="hexmap/@Node2D@234318" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234319" to="hexmap/@Node2D@234319" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234320" to="hexmap/@Node2D@234320" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234321" to="hexmap/@Node2D@234321" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234322" to="hexmap/@Node2D@234322" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/Molten" to="hexmap/Molten" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234323" to="hexmap/@Node2D@234323" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234324" to="hexmap/@Node2D@234324" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234325" to="hexmap/@Node2D@234325" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234326" to="hexmap/@Node2D@234326" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234327" to="hexmap/@Node2D@234327" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234328" to="hexmap/@Node2D@234328" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234329" to="hexmap/@Node2D@234329" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234330" to="hexmap/@Node2D@234330" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234331" to="hexmap/@Node2D@234331" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234332" to="hexmap/@Node2D@234332" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234333" to="hexmap/@Node2D@234333" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234334" to="hexmap/@Node2D@234334" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234335" to="hexmap/@Node2D@234335" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234336" to="hexmap/@Node2D@234336" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234337" to="hexmap/@Node2D@234337" method="_on_clicked"]
-[connection signal="clicked" from="hexmap/@Node2D@234338" to="hexmap/@Node2D@234338" method="_on_clicked"]
-[connection signal="shift" from="hexmap/Rune" to="hexmap/Rune" method="_on_shift"]
-[connection signal="shift" from="hexmap/@Node2D@234339" to="hexmap/@Node2D@234339" method="_on_shift"]
-[connection signal="shift" from="hexmap/@Node2D@234340" to="hexmap/@Node2D@234340" method="_on_shift"]
+[node name="noise" parent="Interface" instance=ExtResource("7_xm5qa")]

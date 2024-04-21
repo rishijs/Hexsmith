@@ -43,5 +43,7 @@ func check_win_state():
 		if rune.solidified == false:
 			win = false
 	if win == true and runes.size() > 0:
-		print("win")
+		get_tree().get_first_node_in_group("LevelComplete").show()
+		if get_tree().get_first_node_in_group("LevelComplete").level_index == 4:
+			get_tree().change_scene_to_file("res://menus/crafted.tscn")
 

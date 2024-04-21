@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct007miqcxe00"]
+
+[ext_resource type="Shader" path="res://art/noise.gdshader" id="1_8e17d"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sthc2"]
+noise_type = 5
+seed = 5
+frequency = 0.0071
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 34.62
+domain_warp_frequency = -0.75
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpiww"]
+seamless = true
+seamless_blend_skirt = 0.347
+noise = SubResource("FastNoiseLite_sthc2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrl1h"]
+shader = ExtResource("1_8e17d")
+shader_parameter/speed = 0.1
+shader_parameter/noise = SubResource("NoiseTexture2D_dpiww")
+
+[node name="noise" type="ColorRect"]
+material = SubResource("ShaderMaterial_wrl1h")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 1, 1, 0.152941)

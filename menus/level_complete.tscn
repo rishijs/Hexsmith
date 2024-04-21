@@ -1,3 +1,74 @@
-[gd_scene format=3 uid="uid://g4oiu4imyvsi"]
+[gd_scene load_steps=4 format=3 uid="uid://g4oiu4imyvsi"]
+
+[ext_resource type="Script" path="res://menus/level_complete.gd" id="1_xcuwh"]
+[ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="2_uyasb"]
+[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="2_wdmm1"]
 
 [node name="LevelComplete" type="CanvasLayer"]
+script = ExtResource("1_xcuwh")
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.207843, 0.0941176, 0.117647, 1)
+
+[node name="noise" parent="." instance=ExtResource("2_wdmm1")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.123
+anchor_right = 0.829
+anchor_bottom = 0.333
+offset_left = -8.44801
+offset_top = 0.295998
+offset_right = -0.00805664
+offset_bottom = -4.784
+theme_override_fonts/font = ExtResource("2_uyasb")
+theme_override_font_sizes/font_size = 100
+text = "PART FORGED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="completion" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.333
+anchor_right = 0.833
+anchor_bottom = 0.457
+offset_left = -0.384018
+offset_top = 0.216003
+offset_right = 0.383911
+offset_bottom = -0.136017
+theme_override_fonts/font = ExtResource("2_uyasb")
+theme_override_font_sizes/font_size = 50
+text = "X PARTS LEFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="next" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.417
+anchor_top = 0.667
+anchor_right = 0.582
+anchor_bottom = 0.781
+offset_left = -0.384033
+offset_top = -0.216034
+offset_right = -0.463989
+offset_bottom = -0.0880127
+theme_override_fonts/font = ExtResource("2_uyasb")
+theme_override_font_sizes/font_size = 50
+text = "NEXT"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]

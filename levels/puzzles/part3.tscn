@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwq466h3c84qt"]
+
+[ext_resource type="Script" path="res://levels/game.gd" id="1_oydnv"]
+[ext_resource type="PackedScene" uid="uid://uns8wqqi0a25" path="res://tiles/molten.tscn" id="2_hkn8x"]
+[ext_resource type="PackedScene" uid="uid://35jv1cq08cj3" path="res://tiles/normal.tscn" id="3_w7hav"]
+[ext_resource type="PackedScene" uid="uid://fbkv1cycyy0j" path="res://tiles/volcanic.tscn" id="4_mk5ad"]
+[ext_resource type="PackedScene" uid="uid://bwktuir1uwrbu" path="res://tiles/solid.tscn" id="5_5mtgj"]
+[ext_resource type="PackedScene" uid="uid://cx7q7eb40c6xx" path="res://tiles/rune.tscn" id="6_s01qy"]
+[ext_resource type="PackedScene" uid="uid://g4oiu4imyvsi" path="res://menus/level_complete.tscn" id="7_m2moh"]
+[ext_resource type="Script" path="res://levels/interface.gd" id="8_cqjw4"]
+[ext_resource type="PackedScene" uid="uid://ct007miqcxe00" path="res://menus/noise.tscn" id="9_o7fou"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwljq"]
+scenes/1/scene = ExtResource("2_hkn8x")
+scenes/2/scene = ExtResource("3_w7hav")
+scenes/3/scene = ExtResource("4_mk5ad")
+scenes/4/scene = ExtResource("5_5mtgj")
+scenes/5/scene = ExtResource("6_s01qy")
+
+[sub_resource type="TileSet" id="TileSet_hceyf"]
+tile_shape = 3
+tile_size = Vector2i(128, 128)
+sources/1 = SubResource("TileSetScenesCollectionSource_fwljq")
+
+[node name="Part3" type="Node2D" groups=["Game"]]
+script = ExtResource("1_oydnv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="hexmap" type="TileMap" parent="." groups=["Hexmap"]]
+tile_set = SubResource("TileSet_hceyf")
+format = 2
+layer_0/name = "hex"
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(-65538, 1, 262144, -65537, 1, 131072, -131072, 1, 131072, -131071, 1, 262144, -1, 1, 262144, -2, 1, 131072, -65536, 1, 131072, 0, 1, 65536, 65535, 1, 131072, 1, 1, 131072, 65534, 1, 131072, -3, 1, 65536, 65533, 1, 131072, 131069, 1, 131072, 131070, 1, 131072, 131071, 1, 131072, 65536, 1, 131072, 65537, 1, 131072, 2, 1, 131072, -65535, 1, 65536, -65539, 1, 131072, -4, 1, 131072, -131070, 1, 131072, -65534, 1, 131072)
+layer_1/name = "rune"
+layer_1/z_index = 2
+layer_1/tile_data = PackedInt32Array(65535, 1, 327680, -65536, 1, 327680, -65539, 1, 327680)
+
+[node name="LevelComplete" parent="." groups=["LevelComplete"] instance=ExtResource("7_m2moh")]
+visible = false
+level_index = 3
+
+[node name="Interface" type="CanvasLayer" parent="."]
+layer = -1
+script = ExtResource("8_cqjw4")
+
+[node name="Background" type="ColorRect" parent="Interface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.00784314, 0.00784314, 1)
+
+[node name="noise" parent="Interface" instance=ExtResource("9_o7fou")]
