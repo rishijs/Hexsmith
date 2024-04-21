@@ -18,7 +18,7 @@ tile_shape = 3
 tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetScenesCollectionSource_fwljq")
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["Game"]]
 script = ExtResource("1_06lvm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -39,3 +39,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+
+[connection signal="clicked" from="hexmap/solid" to="hexmap/solid" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/Normal" to="hexmap/Normal" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176224" to="hexmap/@Node2D@176224" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176225" to="hexmap/@Node2D@176225" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176226" to="hexmap/@Node2D@176226" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176227" to="hexmap/@Node2D@176227" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/volcanic" to="hexmap/volcanic" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/Molten" to="hexmap/Molten" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176228" to="hexmap/@Node2D@176228" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176229" to="hexmap/@Node2D@176229" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176230" to="hexmap/@Node2D@176230" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176231" to="hexmap/@Node2D@176231" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176232" to="hexmap/@Node2D@176232" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176233" to="hexmap/@Node2D@176233" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176234" to="hexmap/@Node2D@176234" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176235" to="hexmap/@Node2D@176235" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176236" to="hexmap/@Node2D@176236" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176237" to="hexmap/@Node2D@176237" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176238" to="hexmap/@Node2D@176238" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176239" to="hexmap/@Node2D@176239" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176240" to="hexmap/@Node2D@176240" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176241" to="hexmap/@Node2D@176241" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176242" to="hexmap/@Node2D@176242" method="_on_clicked"]
+[connection signal="clicked" from="hexmap/@Node2D@176243" to="hexmap/@Node2D@176243" method="_on_clicked"]

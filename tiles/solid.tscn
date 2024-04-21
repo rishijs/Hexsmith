@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwktuir1uwrbu"]
+[gd_scene load_steps=4 format=3 uid="uid://bwktuir1uwrbu"]
 
 [ext_resource type="Script" path="res://tiles/hex.gd" id="1_yt0hv"]
 [ext_resource type="Texture2D" uid="uid://vkouco30ces2" path="res://art/hex.png" id="2_60kep"]
+[ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_ll6f8"]
 
-[node name="solid" type="Node2D" groups=["Hex"]]
+[node name="solid" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex"]]
 script = ExtResource("1_yt0hv")
 hex_type = 3
+hex = NodePath("Sprite2D")
+index_text = NodePath("index")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_60kep")
+
+[node name="index" type="Label" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ll6f8")
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]

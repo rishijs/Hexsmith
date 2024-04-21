@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://uns8wqqi0a25"]
+[gd_scene load_steps=4 format=3 uid="uid://uns8wqqi0a25"]
 
 [ext_resource type="Script" path="res://tiles/hex.gd" id="1_mgwg4"]
 [ext_resource type="Texture2D" uid="uid://cbp1ipfa5s581" path="res://art/moltentile.png" id="1_x3y13"]
+[ext_resource type="FontFile" uid="uid://daqyvu81etlsh" path="res://fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_ph3nv"]
 
-[node name="Molten" type="Node2D" groups=["Hex"]]
+[node name="Molten" type="Node2D" node_paths=PackedStringArray("hex", "index_text") groups=["Hex"]]
 script = ExtResource("1_mgwg4")
 hex_type = 1
+hex = NodePath("Sprite2D")
+index_text = NodePath("index")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_x3y13")
+
+[node name="index" type="Label" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ph3nv")
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]
