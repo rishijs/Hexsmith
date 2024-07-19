@@ -74,6 +74,7 @@ theme_override_font_sizes/font_size = 25
 text = "\"THIS IS SOME FLAVOR TEXT\" - HI"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="next" type="Button" parent="."]
 anchors_preset = -1
